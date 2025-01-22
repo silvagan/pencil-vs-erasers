@@ -11,9 +11,9 @@ config_version=5
 [application]
 
 config/name="Pencil vs Erasers"
-run/main_scene="res://scene.tscn"
+run/main_scene="res://scenes/scene.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="res://icons/icon.svg"
 
 [input]
 
