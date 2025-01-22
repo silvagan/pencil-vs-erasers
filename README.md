@@ -1,4 +1,4 @@
-### This is a 3D FPS game where your main purpose is to keep the biggest postion of the page covered in paint possible whilst fighting off waves of angry destructive erasers.
+### This is a 3D FPS game where your main purpose is to keep the biggest portion of the page covered in paint possible whilst fighting off waves of angry destructive erasers.
 
 ## Game start
 when you begin the game you are placed on the notebook page:
@@ -41,7 +41,6 @@ You can color the canvas by either moving and staying on the ground or shooting 
 </table>
 
 The erasers all remove your markings from the ground, be it intentionally or accidentaly.
-You can color the canvas by either moving and staying on the ground or shooting pellets.
 
 <table border="0" align="center">
   <tr>
@@ -86,3 +85,4 @@ And lastly, according to your performance you get a score:
     <td> <img width= "500" src="https://github.com/user-attachments/assets/618400f4-4772-4f92-9997-a7b391c22a02" alt="test")</td>
   </tr>
 </table>
+If it is in the green you've done a good job :)
