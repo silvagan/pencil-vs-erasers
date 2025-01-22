@@ -54,204 +54,171 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ip51f")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="SceneInfo" type="HBoxContainer" parent="."]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+[node name="Misc" type="VBoxContainer" parent="SceneInfo"]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/VBoxContainer"]
+[node name="CoverMargin" type="MarginContainer" parent="SceneInfo/Misc"]
 clip_contents = true
 layout_mode = 2
 
-[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/MarginContainer"]
+[node name="Label" type="Label" parent="SceneInfo/Misc/CoverMargin"]
 layout_mode = 2
 text = "100%"
 label_settings = SubResource("LabelSettings_caf0y")
 
-[node name="Label2" type="Label" parent="HBoxContainer/VBoxContainer"]
+[node name="Framerate" type="Label" parent="SceneInfo/Misc"]
 layout_mode = 2
 label_settings = SubResource("LabelSettings_mpmcu")
 horizontal_alignment = 2
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer"]
+[node name="WaveIndicators" type="VBoxContainer" parent="SceneInfo"]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer2"]
+[node name="CurrentWave" type="HBoxContainer" parent="SceneInfo/WaveIndicators"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer2/HBoxContainer"]
+[node name="Label" type="Label" parent="SceneInfo/WaveIndicators/CurrentWave"]
 layout_mode = 2
 text = "current wave:"
 label_settings = SubResource("LabelSettings_p1i6s")
 
-[node name="Label2" type="Label" parent="HBoxContainer/VBoxContainer2/HBoxContainer"]
+[node name="Data" type="Label" parent="SceneInfo/WaveIndicators/CurrentWave"]
 layout_mode = 2
 label_settings = SubResource("LabelSettings_p1i6s")
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="HBoxContainer/VBoxContainer2"]
+[node name="NextWaveCountdown" type="HBoxContainer" parent="SceneInfo/WaveIndicators"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer2/HBoxContainer2"]
+[node name="Label" type="Label" parent="SceneInfo/WaveIndicators/NextWaveCountdown"]
 layout_mode = 2
 text = "next wave in "
 label_settings = SubResource("LabelSettings_4gytf")
 
-[node name="Label2" type="Label" parent="HBoxContainer/VBoxContainer2/HBoxContainer2"]
+[node name="Data" type="Label" parent="SceneInfo/WaveIndicators/NextWaveCountdown"]
 layout_mode = 2
 label_settings = SubResource("LabelSettings_r7ktd")
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="."]
+[node name="GameplayTips" type="HBoxContainer" parent="."]
 layout_mode = 2
 alignment = 2
 
-[node name="VBoxContainer3" type="VBoxContainer" parent="HBoxContainer2"]
+[node name="VBoxContainer3" type="VBoxContainer" parent="GameplayTips"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="HBoxContainer2/VBoxContainer3"]
+[node name="Label" type="Label" parent="GameplayTips/VBoxContainer3"]
 layout_mode = 2
 text = "Pencil VS Erasers demo"
 label_settings = SubResource("LabelSettings_vmx5t")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Label2" type="Label" parent="HBoxContainer2/VBoxContainer3"]
+[node name="Label2" type="Label" parent="GameplayTips/VBoxContainer3"]
 layout_mode = 2
 text = "WASD movement"
 label_settings = SubResource("LabelSettings_vmx5t")
 horizontal_alignment = 1
 
-[node name="Label3" type="Label" parent="HBoxContainer2/VBoxContainer3"]
+[node name="Label3" type="Label" parent="GameplayTips/VBoxContainer3"]
 layout_mode = 2
 text = "SHIFT to dash"
 label_settings = SubResource("LabelSettings_vmx5t")
 horizontal_alignment = 1
 
-[node name="Label4" type="Label" parent="HBoxContainer2/VBoxContainer3"]
+[node name="Label4" type="Label" parent="GameplayTips/VBoxContainer3"]
 layout_mode = 2
 text = "LMB to shoot"
 label_settings = SubResource("LabelSettings_vmx5t")
 horizontal_alignment = 1
 
-[node name="Label5" type="Label" parent="HBoxContainer2/VBoxContainer3"]
+[node name="Label5" type="Label" parent="GameplayTips/VBoxContainer3"]
 layout_mode = 2
 text = "SPACEBAR to jump"
 label_settings = SubResource("LabelSettings_vmx5t")
 horizontal_alignment = 1
 
-[node name="Label6" type="Label" parent="HBoxContainer2/VBoxContainer3"]
+[node name="Label6" type="Label" parent="GameplayTips/VBoxContainer3"]
 layout_mode = 2
 text = "ENTER for next wave"
 label_settings = SubResource("LabelSettings_vmx5t")
 horizontal_alignment = 1
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="."]
+[node name="PlayerStats" type="HBoxContainer" parent="."]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer3"]
+[node name="StatName" type="VBoxContainer" parent="PlayerStats"]
 layout_mode = 2
 alignment = 1
 
-[node name="Stat" type="Label" parent="HBoxContainer3/VBoxContainer"]
+[node name="Damage" type="Label" parent="PlayerStats/StatName"]
 layout_mode = 2
 text = "damage:"
 label_settings = SubResource("LabelSettings_sm4e1")
 
-[node name="Stat2" type="Label" parent="HBoxContainer3/VBoxContainer"]
+[node name="ReloadSpeed" type="Label" parent="PlayerStats/StatName"]
 layout_mode = 2
 text = "reload speed:"
 label_settings = SubResource("LabelSettings_sm4e1")
 
-[node name="Stat3" type="Label" parent="HBoxContainer3/VBoxContainer"]
+[node name="ReloadLeft" type="Label" parent="PlayerStats/StatName"]
 layout_mode = 2
 text = "reload left:"
 label_settings = SubResource("LabelSettings_sm4e1")
 
-[node name="Stat4" type="Label" parent="HBoxContainer3/VBoxContainer"]
+[node name="Speed" type="Label" parent="PlayerStats/StatName"]
 layout_mode = 2
 text = "speed:"
 label_settings = SubResource("LabelSettings_sm4e1")
 
-[node name="Stat5" type="Label" parent="HBoxContainer3/VBoxContainer"]
+[node name="Dash" type="Label" parent="PlayerStats/StatName"]
 layout_mode = 2
 text = "dash:"
 label_settings = SubResource("LabelSettings_sm4e1")
 
-[node name="Stat6" type="Label" parent="HBoxContainer3/VBoxContainer"]
+[node name="Radius" type="Label" parent="PlayerStats/StatName"]
 layout_mode = 2
 text = "radius:"
 label_settings = SubResource("LabelSettings_sm4e1")
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer3"]
+[node name="Value" type="VBoxContainer" parent="PlayerStats"]
 layout_mode = 2
 alignment = 1
 
-[node name="Value" type="Label" parent="HBoxContainer3/VBoxContainer2"]
+[node name="Damage" type="Label" parent="PlayerStats/Value"]
 layout_mode = 2
 label_settings = SubResource("LabelSettings_sm4e1")
 
-[node name="Value2" type="Label" parent="HBoxContainer3/VBoxContainer2"]
+[node name="ReloadSpeed" type="Label" parent="PlayerStats/Value"]
 layout_mode = 2
 label_settings = SubResource("LabelSettings_sm4e1")
 
-[node name="Value3" type="Label" parent="HBoxContainer3/VBoxContainer2"]
+[node name="ReloadLeft" type="Label" parent="PlayerStats/Value"]
 layout_mode = 2
 label_settings = SubResource("LabelSettings_sm4e1")
 
-[node name="Value4" type="Label" parent="HBoxContainer3/VBoxContainer2"]
+[node name="Speed" type="Label" parent="PlayerStats/Value"]
 layout_mode = 2
 label_settings = SubResource("LabelSettings_sm4e1")
 
-[node name="Value5" type="Label" parent="HBoxContainer3/VBoxContainer2"]
+[node name="Dash" type="Label" parent="PlayerStats/Value"]
 layout_mode = 2
 label_settings = SubResource("LabelSettings_sm4e1")
 
-[node name="Value6" type="Label" parent="HBoxContainer3/VBoxContainer2"]
+[node name="Radius" type="Label" parent="PlayerStats/Value"]
 layout_mode = 2
 label_settings = SubResource("LabelSettings_sm4e1")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-visible = false
-layout_mode = 2
-size_flags_horizontal = 4
-alignment = 1
-
-[node name="Label" type="Label" parent="VBoxContainer"]
-layout_mode = 2
-text = "End"
-label_settings = SubResource("LabelSettings_j45vb")
-horizontal_alignment = 1
-
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+[node name="Crosshair" type="HBoxContainer" parent="."]
 layout_mode = 2
 alignment = 1
 
-[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer"]
-layout_mode = 2
-text = "score: "
-label_settings = SubResource("LabelSettings_d3tqe")
-horizontal_alignment = 1
-vertical_alignment = 2
-
-[node name="Label2" type="Label" parent="VBoxContainer/HBoxContainer"]
-layout_mode = 2
-label_settings = SubResource("LabelSettings_8725g")
-
-[node name="Label2" type="Label" parent="VBoxContainer"]
-layout_mode = 2
-text = "r to restart"
-label_settings = SubResource("LabelSettings_twiwh")
-horizontal_alignment = 1
-
-[node name="HCrosshair" type="HBoxContainer" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="Crosshair"]
 layout_mode = 2
 alignment = 1
 
-[node name="VCrosshair" type="VBoxContainer" parent="HCrosshair"]
-layout_mode = 2
-alignment = 1
-
-[node name="Crosshair" type="TextureProgressBar" parent="HCrosshair/VCrosshair"]
+[node name="TextureProgressBar" type="TextureProgressBar" parent="Crosshair/VBoxContainer"]
 layout_mode = 2
 step = 0.5
 fill_mode = 4
@@ -259,3 +226,36 @@ texture_under = ExtResource("2_aol1m")
 texture_progress = ExtResource("3_nxyan")
 tint_under = Color(1, 1, 1, 0.376471)
 tint_progress = Color(0, 1, 1, 1)
+
+[node name="EndStats" type="VBoxContainer" parent="."]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+alignment = 1
+
+[node name="Label" type="Label" parent="EndStats"]
+layout_mode = 2
+text = "End"
+label_settings = SubResource("LabelSettings_j45vb")
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="EndStats"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="EndStats/HBoxContainer"]
+layout_mode = 2
+text = "score: "
+label_settings = SubResource("LabelSettings_d3tqe")
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="Label2" type="Label" parent="EndStats/HBoxContainer"]
+layout_mode = 2
+label_settings = SubResource("LabelSettings_8725g")
+
+[node name="Label2" type="Label" parent="EndStats"]
+layout_mode = 2
+text = "r to restart"
+label_settings = SubResource("LabelSettings_twiwh")
+horizontal_alignment = 1

@@ -14,48 +14,49 @@ func _ready():
 	player = tree.current_scene.get_node("/root/Scene/Pencil")
 	reload = tree.current_scene.get_node("/root/Scene/Pencil/ReloadTimer")
 	dash = tree.current_scene.get_node("/root/Scene/Pencil/DashTimer")
-	$HBoxContainer/VBoxContainer/MarginContainer/Label.text = "0%"
 func update():
 	if end_screen:
-		$VBoxContainer.visible = true
-		$HCrosshair.visible = false
+		$EndStats.visible = true
+		$Crosshair.visible = false
 		var score = stage.score
 		if score < 10:
-			$VBoxContainer/HBoxContainer/Label2.label_settings.font_color = red
+			$EndStats/HBoxContainer/Label2.label_settings.font_color = red
 		elif score < 50:
-			$VBoxContainer/HBoxContainer/Label2.label_settings.font_color = yellow
+			$EndStats/HBoxContainer/Label2.label_settings.font_color = yellow
 		else:
-			$VBoxContainer/HBoxContainer/Label2.label_settings.font_color = green
-		$VBoxContainer/HBoxContainer/Label2.text = str(round(score))
+			$EndStats/HBoxContainer/Label2.label_settings.font_color = green
+		$EndStats/HBoxContainer/Label2.text = str(round(score))
 	else:
 		var margin = round(stage.sum/(stage.grid_size.x*stage.grid_size.y)*100)
-		$HBoxContainer/VBoxContainer/MarginContainer/Label.text = str(margin)+"%"
+		$SceneInfo/Misc/CoverMargin/Label.text = str(margin)+"%"
 		if margin > 60:
-			$HBoxContainer/VBoxContainer/MarginContainer/Label.label_settings.font_color = green
+			$SceneInfo/Misc/CoverMargin/Label.label_settings.font_color = green
 		var frames = Engine.get_frames_per_second()
 		if frames > 166:
-			$HBoxContainer/VBoxContainer/Label2.label_settings.font_color = green
+			$SceneInfo/Misc/Framerate.label_settings.font_color = green
 		elif frames > 60:
-			$HBoxContainer/VBoxContainer/Label2.label_settings.font_color = yellow
+			$SceneInfo/Misc/Framerate.label_settings.font_color = yellow
 		else:
-			$HBoxContainer/VBoxContainer/Label2.label_settings.font_color = red
-		$HBoxContainer/VBoxContainer/Label2.text = str(Engine.get_frames_per_second())
-		$HBoxContainer/VBoxContainer2/HBoxContainer2/Label2.text = str(snapped(stage.get_time_to_next_wave(), 0.01))
-		$HBoxContainer/VBoxContainer2/HBoxContainer/Label2.text = stage.current_wave
+			$SceneInfo/Misc/Framerate.label_settings.font_color = red
+		$SceneInfo/Misc/Framerate.text = str(Engine.get_frames_per_second())
+		$SceneInfo/WaveIndicators/NextWaveCountdown/Data.text = str(snapped(stage.get_time_to_next_wave(), 0.01))
+		$SceneInfo/WaveIndicators/CurrentWave/Data.text = stage.current_wave
 		
-		$HBoxContainer3/VBoxContainer2/Value.text = str(player.damage)
-		$HBoxContainer3/VBoxContainer2/Value2.text = str(player.reload_speed)
+		$PlayerStats/Value/Damage.text = str(player.damage)
+		$PlayerStats/Value/ReloadSpeed.text = str(player.reload_speed)
+		$PlayerStats/Value/Speed.text = str(player.speed)
+		$PlayerStats/Value/Radius.text = str(player.radius)
+		
 		var rel:float = snapped(reload.time_left, 0.01)
-		var rel_margin:float = 100 - snapped(rel/reload.wait_time, 0.01)*100
 		var dsh = snapped(dash.time_left, 0.01)
-		$HCrosshair/VCrosshair/Crosshair.value = rel_margin
 		if(rel == 0):
-			$HBoxContainer3/VBoxContainer2/Value3.text = "ready"
+			$PlayerStats/Value/ReloadLeft.text = "ready"
 		else:
-			$HBoxContainer3/VBoxContainer2/Value3.text = str(rel)
-		$HBoxContainer3/VBoxContainer2/Value4.text = str(player.speed)
+			$PlayerStats/Value/ReloadLeft.text = str(rel)
 		if(dsh == 0):
-			$HBoxContainer3/VBoxContainer2/Value5.text = "ready"
+			$PlayerStats/Value/Dash.text = "ready"
 		else:
-			$HBoxContainer3/VBoxContainer2/Value5.text = str(dsh)
-		$HBoxContainer3/VBoxContainer2/Value6.text = str(player.radius)
+			$PlayerStats/Value/Dash.text = str(dsh)
+		
+		var rel_margin:float = 100 - snapped(rel/reload.wait_time, 0.01)*100
+		$Crosshair/VBoxContainer/TextureProgressBar.value = rel_margin
