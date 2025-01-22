@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://cbro0ni0g4paj"]
+
+[ext_resource type="Script" path="res://pencil.gd" id="1_6y4hq"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_r8i66"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_37x6p"]
+
+[node name="Pencil" type="CharacterBody3D"]
+transform = Transform3D(1.01384, 0, 0, 0, 1.01384, 0, 0, 0, 1.01384, 0, 0, 0)
+script = ExtResource("1_6y4hq")
+
+[node name="PencilMesh" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_r8i66")
+
+[node name="PencilCollision" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_37x6p")
+
+[node name="FirstPersonCamera" type="Camera3D" parent="."]
+transform = Transform3D(0.986345, 0, 0, 0, 0.986345, 0, 0, 0, 0.986345, 0, 0.493008, 0)

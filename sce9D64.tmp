@@ -1,0 +1,87 @@
+[gd_scene load_steps=13 format=3 uid="uid://cdcdrlbsf1sba"]
+
+[ext_resource type="PackedScene" uid="uid://cbro0ni0g4paj" path="res://pencil.tscn" id="1_hr86p"]
+[ext_resource type="Texture2D" uid="uid://sqdtw4jks3tf" path="res://tile.png" id="1_squ5g"]
+[ext_resource type="PackedScene" uid="uid://dmvqgryigpp0p" path="res://gui.tscn" id="1_y6b5r"]
+[ext_resource type="Script" path="res://stage.gd" id="2_kl352"]
+[ext_resource type="PackedScene" uid="uid://dqjnnyniicsx1" path="res://eraser.tscn" id="4_lk5v2"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_epcmr"]
+sky_top_color = Color(1, 1, 1, 1)
+sky_horizon_color = Color(0.964622, 0.953699, 0.941262, 1)
+ground_bottom_color = Color(0.858486, 0.814794, 0.76505, 1)
+ground_horizon_color = Color(0.964622, 0.953699, 0.941262, 1)
+
+[sub_resource type="Sky" id="Sky_c6w72"]
+sky_material = SubResource("ProceduralSkyMaterial_epcmr")
+
+[sub_resource type="Environment" id="Environment_e52ie"]
+background_mode = 2
+sky = SubResource("Sky_c6w72")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_nsyg1"]
+vertices = PackedVector3Array(-23.81, 0.499996, -23.81, -23.81, 0.499996, 23.69, 23.69, 0.499996, 23.69, 23.69, 0.499996, -23.81)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gaf8g"]
+albedo_texture = ExtResource("1_squ5g")
+uv1_scale = Vector3(20, 20, 20)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_1lbop"]
+material = SubResource("StandardMaterial3D_gaf8g")
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_2jdck"]
+data = PackedVector3Array(1, 0, 1, -1, 0, 1, 1, 0, -1, -1, 0, 1, -1, 0, -1, 1, 0, -1)
+
+[node name="Scene" type="Node3D"]
+
+[node name="GUI" parent="." instance=ExtResource("1_y6b5r")]
+offset_right = 42.0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_e52ie")
+
+[node name="Pencil" parent="." instance=ExtResource("1_hr86p")]
+transform = Transform3D(1.01384, 0, 0, 0, 1.01384, 0, 0, 0, 1.01384, 0, 1, 0)
+
+[node name="Eraser" parent="." instance=ExtResource("4_lk5v2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 1, 0)
+player_path = NodePath("../Pencil")
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_nsyg1")
+
+[node name="Stage" type="MeshInstance3D" parent="NavigationRegion3D"]
+transform = Transform3D(24.31, 0, 0, 0, 24.31, 0, 0, 0, 24.31, 0, -3.8147e-06, 0)
+mesh = SubResource("PlaneMesh_1lbop")
+skeleton = NodePath("")
+script = ExtResource("2_kl352")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/Stage"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/Stage/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_2jdck")
+
+[node name="Sprite3D" type="Sprite3D" parent="NavigationRegion3D/Stage"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01, 0)
+layers = 2
+axis = 1
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.0260373, 0.999661, 0, -0.999661, 0.0260373, 0.24649, 69.4901, -0.017601)
+visible = false
+light_energy = 16.0
+spot_range = 158.145
+spot_angle = 73.125
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 84.7736, 0)
+visible = false
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.01
+autostart = true
+
+[connection signal="timeout" from="Timer" to="NavigationRegion3D/Stage" method="_on_timer_timeout"]

@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://ghjwek5soie8"]
+
+[ext_resource type="Script" path="res://bullet.gd" id="1_fkwls"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ywgx1"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_oid55"]
+material = SubResource("StandardMaterial3D_ywgx1")
+radial_segments = 8
+rings = 8
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_lrbrc"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_yj0da"]
+
+[node name="Bullet" type="RigidBody3D" groups=["bullets"]]
+rotation_edit_mode = 2
+collision_layer = 2
+collision_mask = 2
+contact_monitor = true
+max_contacts_reported = 1
+script = ExtResource("1_fkwls")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_oid55")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_lrbrc")
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1.1, 0, 0, 0, 1.1, 0, 0, 0, 1.1, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_yj0da")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

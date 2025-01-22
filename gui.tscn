@@ -1,0 +1,261 @@
+[gd_scene load_steps=15 format=3 uid="uid://dmvqgryigpp0p"]
+
+[ext_resource type="Script" path="res://gui.gd" id="1_ip51f"]
+[ext_resource type="Texture2D" uid="uid://beab7p3t6pgug" path="res://under.png" id="2_aol1m"]
+[ext_resource type="Texture2D" uid="uid://bgmo776ukjapu" path="res://progress.png" id="3_nxyan"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_caf0y"]
+font_size = 50
+font_color = Color(0, 0, 0, 1)
+outline_size = 1
+
+[sub_resource type="LabelSettings" id="LabelSettings_mpmcu"]
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_p1i6s"]
+font_size = 26
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_4gytf"]
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_r7ktd"]
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_vmx5t"]
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_sm4e1"]
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_j45vb"]
+font_size = 250
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_d3tqe"]
+font_size = 100
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_8725g"]
+font_size = 100
+font_color = Color(0, 0.610609, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_twiwh"]
+font_size = 50
+font_color = Color(0, 0.705734, 0.711067, 1)
+
+[node name="GUI" type="MarginContainer"]
+clip_contents = true
+anchors_preset = -1
+anchor_right = 0.962
+anchor_bottom = 1.0
+offset_right = 43.7759
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ip51f")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/VBoxContainer"]
+clip_contents = true
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+text = "100%"
+label_settings = SubResource("LabelSettings_caf0y")
+
+[node name="Label2" type="Label" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+label_settings = SubResource("LabelSettings_mpmcu")
+horizontal_alignment = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer2/HBoxContainer"]
+layout_mode = 2
+text = "current wave:"
+label_settings = SubResource("LabelSettings_p1i6s")
+
+[node name="Label2" type="Label" parent="HBoxContainer/VBoxContainer2/HBoxContainer"]
+layout_mode = 2
+label_settings = SubResource("LabelSettings_p1i6s")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer2/HBoxContainer2"]
+layout_mode = 2
+text = "next wave in "
+label_settings = SubResource("LabelSettings_4gytf")
+
+[node name="Label2" type="Label" parent="HBoxContainer/VBoxContainer2/HBoxContainer2"]
+layout_mode = 2
+label_settings = SubResource("LabelSettings_r7ktd")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="."]
+layout_mode = 2
+alignment = 2
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="HBoxContainer2"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer2/VBoxContainer3"]
+layout_mode = 2
+text = "Pencil VS Erasers demo"
+label_settings = SubResource("LabelSettings_vmx5t")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="HBoxContainer2/VBoxContainer3"]
+layout_mode = 2
+text = "WASD movement"
+label_settings = SubResource("LabelSettings_vmx5t")
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="HBoxContainer2/VBoxContainer3"]
+layout_mode = 2
+text = "SHIFT to dash"
+label_settings = SubResource("LabelSettings_vmx5t")
+horizontal_alignment = 1
+
+[node name="Label4" type="Label" parent="HBoxContainer2/VBoxContainer3"]
+layout_mode = 2
+text = "LMB to shoot"
+label_settings = SubResource("LabelSettings_vmx5t")
+horizontal_alignment = 1
+
+[node name="Label5" type="Label" parent="HBoxContainer2/VBoxContainer3"]
+layout_mode = 2
+text = "SPACEBAR to jump"
+label_settings = SubResource("LabelSettings_vmx5t")
+horizontal_alignment = 1
+
+[node name="Label6" type="Label" parent="HBoxContainer2/VBoxContainer3"]
+layout_mode = 2
+text = "ENTER for next wave"
+label_settings = SubResource("LabelSettings_vmx5t")
+horizontal_alignment = 1
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer3"]
+layout_mode = 2
+alignment = 1
+
+[node name="Stat" type="Label" parent="HBoxContainer3/VBoxContainer"]
+layout_mode = 2
+text = "damage:"
+label_settings = SubResource("LabelSettings_sm4e1")
+
+[node name="Stat2" type="Label" parent="HBoxContainer3/VBoxContainer"]
+layout_mode = 2
+text = "reload speed:"
+label_settings = SubResource("LabelSettings_sm4e1")
+
+[node name="Stat3" type="Label" parent="HBoxContainer3/VBoxContainer"]
+layout_mode = 2
+text = "reload left:"
+label_settings = SubResource("LabelSettings_sm4e1")
+
+[node name="Stat4" type="Label" parent="HBoxContainer3/VBoxContainer"]
+layout_mode = 2
+text = "speed:"
+label_settings = SubResource("LabelSettings_sm4e1")
+
+[node name="Stat5" type="Label" parent="HBoxContainer3/VBoxContainer"]
+layout_mode = 2
+text = "dash:"
+label_settings = SubResource("LabelSettings_sm4e1")
+
+[node name="Stat6" type="Label" parent="HBoxContainer3/VBoxContainer"]
+layout_mode = 2
+text = "radius:"
+label_settings = SubResource("LabelSettings_sm4e1")
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer3"]
+layout_mode = 2
+alignment = 1
+
+[node name="Value" type="Label" parent="HBoxContainer3/VBoxContainer2"]
+layout_mode = 2
+label_settings = SubResource("LabelSettings_sm4e1")
+
+[node name="Value2" type="Label" parent="HBoxContainer3/VBoxContainer2"]
+layout_mode = 2
+label_settings = SubResource("LabelSettings_sm4e1")
+
+[node name="Value3" type="Label" parent="HBoxContainer3/VBoxContainer2"]
+layout_mode = 2
+label_settings = SubResource("LabelSettings_sm4e1")
+
+[node name="Value4" type="Label" parent="HBoxContainer3/VBoxContainer2"]
+layout_mode = 2
+label_settings = SubResource("LabelSettings_sm4e1")
+
+[node name="Value5" type="Label" parent="HBoxContainer3/VBoxContainer2"]
+layout_mode = 2
+label_settings = SubResource("LabelSettings_sm4e1")
+
+[node name="Value6" type="Label" parent="HBoxContainer3/VBoxContainer2"]
+layout_mode = 2
+label_settings = SubResource("LabelSettings_sm4e1")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+alignment = 1
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "End"
+label_settings = SubResource("LabelSettings_j45vb")
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "score: "
+label_settings = SubResource("LabelSettings_d3tqe")
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="Label2" type="Label" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+label_settings = SubResource("LabelSettings_8725g")
+
+[node name="Label2" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "r to restart"
+label_settings = SubResource("LabelSettings_twiwh")
+horizontal_alignment = 1
+
+[node name="HCrosshair" type="HBoxContainer" parent="."]
+layout_mode = 2
+alignment = 1
+
+[node name="VCrosshair" type="VBoxContainer" parent="HCrosshair"]
+layout_mode = 2
+alignment = 1
+
+[node name="Crosshair" type="TextureProgressBar" parent="HCrosshair/VCrosshair"]
+layout_mode = 2
+step = 0.5
+fill_mode = 4
+texture_under = ExtResource("2_aol1m")
+texture_progress = ExtResource("3_nxyan")
+tint_under = Color(1, 1, 1, 0.376471)
+tint_progress = Color(0, 1, 1, 1)
