@@ -50,7 +50,7 @@ func _physics_process(delta: float) -> void:
 				prev_pos = $"../NavigationRegion3D/Stage".translate_world_to_grid(position)
 				in_air = false
 			
-			if Input.is_action_just_pressed("ui_accept") and is_on_floor():
+			if Input.is_action_just_pressed("jump") and is_on_floor():
 				velocity.y = JUMP_VELOCITY
 				in_air=true
 
@@ -115,7 +115,12 @@ func shoot() -> void:
 func _notification(what: int):
 	if what == NOTIFICATION_APPLICATION_FOCUS_OUT:
 		focused = false
+		get_tree().paused = true
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	if what == NOTIFICATION_APPLICATION_FOCUS_IN:
+		focused = true
+		get_tree().paused = false
+		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 func _on_reload_timer_timeout() -> void:
 	reloading = false

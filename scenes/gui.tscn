@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dmvqgryigpp0p"]
+[gd_scene load_steps=16 format=3 uid="uid://dmvqgryigpp0p"]
 
 [ext_resource type="Script" path="res://scripts/gui.gd" id="1_ip51f"]
 [ext_resource type="Texture2D" uid="uid://beab7p3t6pgug" path="res://icons/under.png" id="2_aol1m"]
@@ -23,6 +23,9 @@ font_color = Color(0, 0, 0, 1)
 font_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_vmx5t"]
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_r1usq"]
 font_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_sm4e1"]
@@ -143,6 +146,12 @@ horizontal_alignment = 1
 layout_mode = 2
 text = "ENTER for next wave"
 label_settings = SubResource("LabelSettings_vmx5t")
+horizontal_alignment = 1
+
+[node name="Label7" type="Label" parent="GameplayTips/VBoxContainer3"]
+layout_mode = 2
+text = "ESC to unlock mouse"
+label_settings = SubResource("LabelSettings_r1usq")
 horizontal_alignment = 1
 
 [node name="PlayerStats" type="HBoxContainer" parent="."]
