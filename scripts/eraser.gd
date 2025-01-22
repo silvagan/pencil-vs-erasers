@@ -63,7 +63,6 @@ func _physics_process(delta: float) -> void:
 	var next_nav_point = nav_agent.get_next_path_position()
 	velocity = (next_nav_point - global_transform.origin).normalized() * SPEED * delta * 60
 	move_and_slide()
-	pass
 	
 var states = {"idle":1, "wait":1, "chase":2, "spiral":3}
 func take_damage(value):

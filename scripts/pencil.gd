@@ -36,14 +36,12 @@ func _physics_process(delta: float) -> void:
 		if(Input.is_action_just_pressed("unlock mouse")):
 			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 			focused = false
+			print(velocity)
 		if dead:
 			velocity = Vector3(0,0,0)
 		else:
 			if (Input.is_action_pressed("shoot") && !reloading):
 				shoot()
-			# Add the gravity.
-			if not is_on_floor():
-				velocity += get_gravity() * delta
 
 			# Handle jump.
 			if(is_on_floor() && in_air == true):
@@ -53,7 +51,7 @@ func _physics_process(delta: float) -> void:
 			if Input.is_action_just_pressed("jump") and is_on_floor():
 				velocity.y = JUMP_VELOCITY
 				in_air=true
-
+		
 
 		# Get the input direction and handle the movement/deceleration.
 		# As good practice, you should replace UI actions with custom gameplay actions.
@@ -74,10 +72,11 @@ func _physics_process(delta: float) -> void:
 			else:
 				velocity.z += direction.z * speed * delta
 		else:
+			print(velocity)
 			velocity.x = lerpf(velocity.x, 0, 0.01)
 			velocity.z = lerpf(velocity.z, 0, 0.01)
+			print(velocity)
 
-		move_and_slide()
 		for body in $Area3D.get_overlapping_bodies():
 			if body.is_in_group("erasers"):
 				$"../NavigationRegion3D/Stage".end = true
@@ -98,6 +97,9 @@ func _physics_process(delta: float) -> void:
 		if (position.y < 0):
 			$"../NavigationRegion3D/Stage".end = true
 			dead = true
+	if not is_on_floor():
+		velocity += get_gravity() * delta
+	move_and_slide()
 
 func shoot() -> void:
 	var bull = bullet.instantiate()
@@ -113,7 +115,7 @@ func shoot() -> void:
 	$ReloadTimer.start()
 	
 func _notification(what: int):
-	if what == NOTIFICATION_APPLICATION_FOCUS_OUT:
+	if what == NOTIFICATION_APPLICATION_FOCUS_OUT && focused == true:
 		focused = false
 		get_tree().paused = true
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
