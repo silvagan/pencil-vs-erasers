@@ -118,9 +118,9 @@ func _notification(what: int):
 		get_tree().paused = true
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	if what == NOTIFICATION_APPLICATION_FOCUS_IN:
-		focused = true
+		#focused = true
 		get_tree().paused = false
-		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+		#Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 func _on_reload_timer_timeout() -> void:
 	reloading = false
